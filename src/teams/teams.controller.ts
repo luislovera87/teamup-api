@@ -3,6 +3,7 @@ import { TeamsService } from './teams.service';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { UpdateUserDto } from 'src/users/dto/update-user.dto';
 
 @ApiTags('teams')
 @Controller('teams')
@@ -20,8 +21,8 @@ export class TeamsController {
   }
 
   @Get(':team_id')
-  findById(@Param('team_id') team_id: string) {
-    return this.teamsService.findById(team_id);
+  findOne(@Param('team_id') team_id: string) {
+    return this.teamsService.findOne(team_id);
   }
 
   @Patch(':team_id')
@@ -32,5 +33,10 @@ export class TeamsController {
   @Delete(':team_id')
   remove(@Param('team_id') team_id: string) {
     return this.teamsService.remove(team_id);
+  }
+
+  @Patch(':team_id/player')
+  addPlayer(@Param('team_id') team_id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.teamsService.addPlayer(team_id, updateUserDto);
   }
 }

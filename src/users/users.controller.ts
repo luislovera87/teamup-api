@@ -20,8 +20,8 @@ export class UsersController {
   }
 
   @Get(':user_id')
-  findById(@Param('user_id') user_id: string) {
-    return this.usersService.findById(user_id);
+  findOne(@Param('user_id') user_id: string) {
+    return this.usersService.findOne(user_id);
   }
 
   @Patch(':user_id')

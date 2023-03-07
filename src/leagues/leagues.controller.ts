@@ -20,8 +20,8 @@ export class LeaguesController {
   }
 
   @Get(':league_id')
-  findById(@Param('league_id') league_id: string) {
-    return this.leaguesService.findById(league_id);
+  findOne(@Param('league_id') league_id: string) {
+    return this.leaguesService.findOne(league_id);
   }
 
   @Patch(':league_id')
@@ -33,4 +33,6 @@ export class LeaguesController {
   remove(@Param('league_id') league_id: string) {
     return this.leaguesService.remove(league_id);
   }
+
+  
 }

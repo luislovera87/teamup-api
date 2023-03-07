@@ -1,4 +1,4 @@
 export class PaymentMethod {
-    readonly id: string;
+    readonly pm_id: string;
     readonly type: string;
 }

@@ -8,17 +8,20 @@ export type TeamDocument = HydratedDocument<Team>;
 @Schema()
 export class Team {
 
-    @Prop()
+    @Prop({ index: { unique: true }})
     team_id: string;
 
-    @Prop()
+    @Prop({ required: true })
     name: string;
 
-    @Prop()
+    @Prop({ required: true })
+    sport_id: string;
+
+    @Prop({ required: true })
     category_id: string;
 
     @Prop({ type: mongoose.Types.ObjectId, ref: 'User'})
-    participants: User[];
+    players: User[];
 
     @Prop()
     is_active: boolean;

@@ -7,7 +7,7 @@ export type PaymentMethodDocument = HydratedDocument<PaymentMethod>;
 export class PaymentMethod {
 
     @Prop()
-    id: string;
+    pm_id: string;
 
     @Prop()
     type: string;

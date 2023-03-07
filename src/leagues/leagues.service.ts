@@ -5,13 +5,15 @@ import { League } from './entities/league.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { LeagueDocument } from './schemas/league.schema';
 import { Model } from 'mongoose';
+import { UtilsService } from 'src/shared/utils.service';
 
 @Injectable()
 export class LeaguesService {
 
-  constructor(@InjectModel(League.name) private readonly leagueModel: Model<LeagueDocument>) {}
+  constructor(@InjectModel(League.name) private readonly leagueModel: Model<LeagueDocument>, private utilsService: UtilsService) {}
 
   create(createLeagueDto: CreateLeagueDto) {
+    createLeagueDto.league_id = this.utilsService.generateId();
     const createdLeague = new this.leagueModel(createLeagueDto);
     return createdLeague.save();
   }
@@ -20,7 +22,7 @@ export class LeaguesService {
     return this.leagueModel.find({}).exec();
   }
 
-  findById(league_id: string) {
+  findOne(league_id: string) {
     return this.leagueModel.findOne({ league_id }).exec();
   }
 

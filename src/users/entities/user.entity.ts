@@ -1,3 +1,4 @@
+import { Channel } from "./channel.entity";
 import { PaymentMethod } from "./payment-method.entity"
 
 export class User {
@@ -12,5 +13,6 @@ export class User {
     readonly is_owner?: boolean = false;
     readonly city?: string;
     readonly state?: string;
-    readonly payment_methods?: PaymentMethod[] = [];
+    // readonly payment_methods?: PaymentMethod[] = [];
+    // readonly channels: Channel[] = [];
 }

@@ -1,3 +1,4 @@
+import { Channel } from "../entities/channel.entity";
 import { PaymentMethod } from "../entities/payment-method.entity"
 
 
@@ -13,5 +14,6 @@ export class CreateUserDto {
     readonly is_owner?: boolean = false;
     readonly city?: string;
     readonly state?: string;
-    readonly payment_methods?: PaymentMethod[] = [];
+    // readonly payment_methods?: PaymentMethod[] = [];    
+    // readonly channels?: Channel[] = [];
 }

@@ -6,7 +6,7 @@ import { PaymentMethod } from './users/entities/payment-method.entity';
 declare const module: any;
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   const config = new DocumentBuilder()
     .setTitle('Teamup')
     .setDescription('The Teamup API description')
