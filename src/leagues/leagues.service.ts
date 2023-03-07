@@ -13,7 +13,6 @@ export class LeaguesService {
   constructor(@InjectModel(League.name) private readonly leagueModel: Model<LeagueDocument>, private utilsService: UtilsService) {}
 
   create(createLeagueDto: CreateLeagueDto) {
-    createLeagueDto.league_id = this.utilsService.generateId();
     const createdLeague = new this.leagueModel(createLeagueDto);
     return createdLeague.save();
   }

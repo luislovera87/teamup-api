@@ -15,7 +15,6 @@ export class TeamsService {
   constructor(@InjectModel(Team.name) private readonly teamModel: Model<TeamDocument>, private utilsService: UtilsService) { }
 
   create(createTeamDto: CreateTeamDto) {
-    createTeamDto.team_id = this.utilsService.generateId();
     const createdTeam = new this.teamModel(createTeamDto);
     return createdTeam.save();
   }
