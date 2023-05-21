@@ -1,4 +1,5 @@
 export class Sport {
-    sport_id: string;
     name: string;
+    icon: string;
+    alias: string;
 }

@@ -20,15 +20,15 @@ export class SportsService {
     return this.sportModel.find({}).exec();
   }
 
-  findById(sport_id: string) {
-    return this.sportModel.findOne({ sport_id }).exec();
+  findById(_id: string) {
+    return this.sportModel.findOne({ _id }).exec();
   }
 
-  update(sport_id: string, updateSportDto: UpdateSportDto) {
-    return this.sportModel.updateOne({ sport_id }, { $set: updateSportDto }).exec();
+  update(_id: string, updateSportDto: UpdateSportDto) {
+    return this.sportModel.updateOne({ _id }, { $set: updateSportDto }).exec();
   }
 
-  remove(sport_id: string) {
-    return this.sportModel.deleteOne({ sport_id }).exec();
+  remove(_id: string) {
+    return this.sportModel.deleteOne({ _id }).exec();
   }
 }

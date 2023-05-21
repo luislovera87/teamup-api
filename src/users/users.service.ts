@@ -19,15 +19,15 @@ export class UsersService {
     return this.userModel.find({}).exec();
   }
 
-  findById(user_id: string): Promise<User>{
-    return this.userModel.findById({ user_id }).exec();
+  findById(_id: string): Promise<User>{
+    return this.userModel.findById({ _id }).exec();
   }
 
-  update(user_id: string, updateUserDto: UpdateUserDto) {
-    return this.userModel.updateOne({ user_id }, { $set: updateUserDto }).exec();
+  update(_id: string, updateUserDto: UpdateUserDto) {
+    return this.userModel.updateOne({ _id }, { $set: updateUserDto }).exec();
   }
 
-  remove(user_id: string) {
-    return this.userModel.deleteOne({ user_id }).exec();
+  remove(_id: string) {
+    return this.userModel.deleteOne({ _id }).exec();
   }
 }

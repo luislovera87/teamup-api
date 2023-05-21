@@ -20,15 +20,15 @@ export class TeamsService {
     return this.teamModel.find({}).exec();
   }
 
-  findById(team_id: string) {
-    return this.teamModel.findOne({ team_id }).exec();
+  findById(_id: string) {
+    return this.teamModel.findOne({ _id }).exec();
   }
 
-  update(team_id: string, updateTeamDto: UpdateTeamDto) {
-    return this.teamModel.updateOne({ team_id }, { $set: updateTeamDto }).exec();
+  update(_id: string, updateTeamDto: UpdateTeamDto) {
+    return this.teamModel.updateOne({ _id }, { $set: updateTeamDto }).exec();
   }
 
-  remove(team_id: string) {
-    return this.teamModel.deleteOne({ team_id }).exec();
+  remove(_id: string) {
+    return this.teamModel.deleteOne({ _id }).exec();
   }
 }

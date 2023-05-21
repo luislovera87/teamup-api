@@ -6,10 +6,7 @@ export type UserDocument = mongoose.HydratedDocument<User>;
 
 @Schema()
 export class User {
-
-    @Prop()
-    user_id: string;
-
+    
     @Prop()
     first_name: string;
 
@@ -39,9 +36,6 @@ export class User {
 
     @Prop()
     state: string;
-
-    @Prop({ type: mongoose.Types.ObjectId, ref: 'PaymentMethod'})
-    payment_methods: PaymentMethod[]
 
 }
 

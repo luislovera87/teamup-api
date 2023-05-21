@@ -13,6 +13,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('users')
     .addTag('teams')
+    .addTag('sports')
     .addTag('leagues')
     .build();
   const document = SwaggerModule.createDocument(app, config, { extraModels: [PaymentMethod]});

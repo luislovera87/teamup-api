@@ -7,10 +7,13 @@ export type SportDocument = HydratedDocument<Sport>;
 export class Sport {
 
     @Prop()
-    sport_id: string;
+    name: string;
 
     @Prop()
-    name: string;
+    icon: string;
+
+    @Prop()
+    alias: string;
 
 }
 

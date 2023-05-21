@@ -1,4 +1,5 @@
 export class CreateSportDto {
-    sport_id: string;
-    name: string;
+    readonly name: string;
+    readonly alias: string;
+    readonly icon: string;
 }

@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import * as mongoose from "mongoose"
-import { User } from "src/users/schemas/user.schema";
 
 export type LeagueDocument = mongoose.HydratedDocument<League>;
 
@@ -13,11 +12,17 @@ export class League {
     @Prop()
     name: string;
 
-    @Prop({ type: mongoose.Types.ObjectId, ref: 'User'})
-    owners: User[];
+    @Prop()
+    owners: string[];
 
     @Prop()
     is_active: boolean;
+
+    @Prop()
+    sport_id: string;
+
+    @Prop()
+    teams: string[];
 
 }
 

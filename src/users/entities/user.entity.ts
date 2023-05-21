@@ -1,7 +1,6 @@
 import { PaymentMethod } from "./payment-method.entity"
 
 export class User {
-    readonly user_id: string;
     readonly first_name: string;
     readonly last_name: string;
     readonly dob: string;
@@ -12,5 +11,4 @@ export class User {
     readonly is_owner?: boolean = false;
     readonly city?: string;
     readonly state?: string;
-    readonly payment_methods?: PaymentMethod[] = [];
 }

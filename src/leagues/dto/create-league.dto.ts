@@ -1,8 +1,7 @@
-import { User } from "src/users/entities/user.entity";
-
 export class CreateLeagueDto {
-    league_id: string;
-    name: string;
-    owners: User[] = [];
-    is_active: boolean = true;
+    readonly name: string;
+    readonly owners: string[] = [];
+    readonly is_active: boolean = true;
+    readonly sport_id: string;
+    readonly teams: string[];
 }
