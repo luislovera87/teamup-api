@@ -19,18 +19,18 @@ export class TeamsController {
     return this.teamsService.findAll();
   }
 
-  @Get(':d_id')
-  findById(@Param('d_id') d_id: string) {
-    return this.teamsService.findById(d_id);
+  @Get(':_id')
+  findById(@Param('_id') _id: string) {
+    return this.teamsService.findById(_id);
   }
 
-  @Patch(':d_id')
-  update(@Param('d_id') d_id: string, @Body() updateTeamDto: UpdateTeamDto) {
-    return this.teamsService.update(d_id, updateTeamDto);
+  @Patch(':_id')
+  update(@Param('_id') _id: string, @Body() updateTeamDto: UpdateTeamDto) {
+    return this.teamsService.update(_id, updateTeamDto);
   }
 
-  @Delete(':d_id')
-  remove(@Param('d_id') d_id: string) {
-    return this.teamsService.remove(d_id);
+  @Delete(':_id')
+  remove(@Param('_id') _id: string) {
+    return this.teamsService.remove(_id);
   }
 }
