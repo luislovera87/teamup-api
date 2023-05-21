@@ -1,9 +1,7 @@
-import { User } from "src/users/entities/user.entity";
-
 export class Team {
     team_id: string;
     name: string;
     category_id: string;
-    players?: User[] = [];
+    players?: string[] = [];
     is_active: boolean = true;
 }

@@ -4,6 +4,8 @@ import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { UpdateUserDto } from 'src/users/dto/update-user.dto';
+import { User } from 'src/users/entities/user.entity';
+import { UserDocument } from 'src/users/schemas/user.schema';
 
 @ApiTags('teams')
 @Controller('teams')
@@ -20,23 +22,23 @@ export class TeamsController {
     return this.teamsService.findAll();
   }
 
-  @Get(':team_id')
-  findOne(@Param('team_id') team_id: string) {
-    return this.teamsService.findOne(team_id);
+  @Get(':_id')
+  findById(@Param('_id') _id: string) {
+    return this.teamsService.findById(_id);
   }
 
-  @Patch(':team_id')
-  update(@Param('team_id') team_id: string, @Body() updateTeamDto: UpdateTeamDto) {
-    return this.teamsService.update(team_id, updateTeamDto);
+  @Patch(':_id')
+  update(@Param('_id') _id: string, @Body() updateTeamDto: UpdateTeamDto) {
+    return this.teamsService.update(_id, updateTeamDto);
   }
 
-  @Delete(':team_id')
-  remove(@Param('team_id') team_id: string) {
-    return this.teamsService.remove(team_id);
+  @Delete(':_id')
+  remove(@Param('_id') _id: string) {
+    return this.teamsService.remove(_id);
   }
 
   @Patch(':team_id/player')
-  addPlayer(@Param('team_id') team_id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.teamsService.addPlayer(team_id, updateUserDto);
+  addPlayer(@Param('team_id') team_id: string, @Body() newPlayer: UserDocument) {
+    return this.teamsService.addPlayer(team_id, newPlayer);
   }
 }

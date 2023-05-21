@@ -21,15 +21,15 @@ export class LeaguesService {
     return this.leagueModel.find({}).exec();
   }
 
-  findOne(league_id: string) {
-    return this.leagueModel.findOne({ league_id }).exec();
+  findById(_id: string) {
+    return this.leagueModel.findOne({ _id }).exec();
   }
 
-  update(league_id: string, updateLeagueDto: UpdateLeagueDto) {
-    return this.leagueModel.updateOne({ league_id }, { $set: updateLeagueDto }).exec();
+  update(_id: string, updateLeagueDto: UpdateLeagueDto) {
+    return this.leagueModel.updateOne({ _id }, { $set: updateLeagueDto }).exec();
   }
 
-  remove(league_id: string) {
-    return this.leagueModel.deleteOne({ league_id }).exec();
+  remove(_id: string) {
+    return this.leagueModel.deleteOne({ _id }).exec();
   }
 }

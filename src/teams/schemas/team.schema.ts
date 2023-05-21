@@ -1,7 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument } from "mongoose"
-import * as mongoose from 'mongoose';
-import { User } from "src/users/schemas/user.schema";
 
 export type TeamDocument = HydratedDocument<Team>;
 
@@ -20,8 +18,8 @@ export class Team {
     @Prop({ required: true })
     category_id: string;
 
-    @Prop({ type: mongoose.Types.ObjectId, ref: 'User'})
-    players: User[];
+    @Prop()
+    players: string[];
 
     @Prop()
     is_active: boolean;

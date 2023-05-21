@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { SportsService } from './sports.service';
 import { CreateSportDto } from './dto/create-sport.dto';
 import { UpdateSportDto } from './dto/update-sport.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('sports')
 @Controller('sports')
 export class SportsController {
   constructor(private readonly sportsService: SportsService) {}
@@ -17,18 +19,18 @@ export class SportsController {
     return this.sportsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.sportsService.findOne(+id);
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
+    return this.sportsService.findById(_id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSportDto: UpdateSportDto) {
-    return this.sportsService.update(+id, updateSportDto);
+  @Patch(':_id')
+  update(@Param('_id') _id: string, @Body() updateSportDto: UpdateSportDto) {
+    return this.sportsService.update(_id, updateSportDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.sportsService.remove(+id);
+  @Delete(':_id')
+  remove(@Param('_id') _id: string) {
+    return this.sportsService.remove(_id);
   }
 }

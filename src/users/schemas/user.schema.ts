@@ -8,10 +8,7 @@ export type UserDocument = mongoose.HydratedDocument<User>;
 @Schema()
 export class User {
     
-    @Prop({ index: { unique: true } })
-    user_id: string;
-
-    @Prop({ required: true })
+    @Prop()
     first_name: string;
 
     @Prop({ required: true })
@@ -40,15 +37,6 @@ export class User {
 
     @Prop()
     state: string;
-
-    @Prop({ required: true, default: [] })
-    roles: string[];
-
-    // @Prop({ type: mongoose.Types.ObjectId, ref: 'PaymentMethod'})
-    // payment_methods: PaymentMethod[];
-
-    // @Prop({ type: mongoose.Types.ObjectId, ref: 'Channel'})
-    // channels: Channel[];
 
 }
 

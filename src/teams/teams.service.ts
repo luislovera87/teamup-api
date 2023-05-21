@@ -5,9 +5,9 @@ import { Team } from './entities/team.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { TeamDocument } from './schemas/team.schema';
 import { Model } from 'mongoose';
-import { User } from 'src/users/entities/user.entity';
+import { ObjectId } from "mongoose"
 import { UtilsService } from 'src/shared/utils.service';
-import { UpdateUserDto } from 'src/users/dto/update-user.dto';
+import { UserDocument } from 'src/users/schemas/user.schema';
 
 @Injectable()
 export class TeamsService {
@@ -23,22 +23,22 @@ export class TeamsService {
     return this.teamModel.find({}).exec();
   }
 
-  findOne(team_id: string): Promise<Team> {
-    return this.teamModel.findOne({ team_id }).exec();
+  findById(_id: string) {
+    return this.teamModel.findOne({ _id }).exec();
   }
 
-  update(team_id: string, updateTeamDto: UpdateTeamDto) {
-    return this.teamModel.updateOne({ team_id }, { $set: updateTeamDto }).exec();
+  update(_id: string, updateTeamDto: UpdateTeamDto) {
+    return this.teamModel.updateOne({ _id }, { $set: updateTeamDto }).exec();
   }
 
-  remove(team_id: string) {
-    return this.teamModel.deleteOne({ team_id }).exec();
+  remove(_id: string) {
+    return this.teamModel.deleteOne({ _id }).exec();
   }
 
-  async addPlayer(team_id: string, player: UpdateUserDto) {
-    const foundTeam = await this.findOne(team_id);
-    if(!foundTeam.players.find(player => player.user_id === player.user_id)){
-      return this.teamModel.updateOne({ team_id }, { $push: { $players: player } });
+  async addPlayer(team_id: string, newPlayer: UserDocument) {
+    const foundTeam = await this.teamModel.findById(team_id);
+    if (!foundTeam.players.find(_id => _id === String(newPlayer._id))) {
+      return this.teamModel.updateOne({ team_id }, { $push: { $players: newPlayer._id } });
     } else {
       throw new Error("Player already exists on this team");
     }

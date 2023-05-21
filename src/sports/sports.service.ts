@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSportDto } from './dto/create-sport.dto';
 import { UpdateSportDto } from './dto/update-sport.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Sport } from './entities/sport.entity';
+import { SportDocument } from './schemas/sport.schema';
 
 @Injectable()
 export class SportsService {
+  
+  constructor(@InjectModel(Sport.name) private readonly sportModel: Model<SportDocument>) {}
+
   create(createSportDto: CreateSportDto) {
-    return 'This action adds a new sport';
+    const createdSport = new this.sportModel(createSportDto);
+    return createdSport.save();
   }
 
-  findAll() {
-    return `This action returns all sports`;
+  findAll(): Promise<Sport[]> {
+    return this.sportModel.find({}).exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} sport`;
+  findById(_id: string) {
+    return this.sportModel.findOne({ _id }).exec();
   }
 
-  update(id: number, updateSportDto: UpdateSportDto) {
-    return `This action updates a #${id} sport`;
+  update(_id: string, updateSportDto: UpdateSportDto) {
+    return this.sportModel.updateOne({ _id }, { $set: updateSportDto }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} sport`;
+  remove(_id: string) {
+    return this.sportModel.deleteOne({ _id }).exec();
   }
 }
