@@ -14,6 +14,8 @@ async function bootstrap() {
     .addTag('teams')
     .addTag('sports')
     .addTag('leagues')
+    .addTag('tournaments')
+    .addTag('categories')
     .build();
   const document = SwaggerModule.createDocument(app, config, { extraModels: []});
   SwaggerModule.setup('api', app, document);
