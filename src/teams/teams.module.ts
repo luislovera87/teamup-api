@@ -4,16 +4,9 @@ import { TeamsController } from './teams.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Team, TeamSchema } from './schemas/team.schema';
 import { UtilsService } from 'src/shared/utils.service';
-import { nanoid } from 'nanoid';
 
 @Module({
-  imports: [MongooseModule.forFeatureAsync([{ name: Team.name, useFactory: () => {
-    const schema = TeamSchema;
-    schema.pre('save', function () {
-      this.team_id = nanoid(7);
-    });
-    return schema;
-  } }])],
+  imports: [MongooseModule.forFeature([{ name: Team.name, schema: TeamSchema }])],
   controllers: [TeamsController],
   providers: [TeamsService, UtilsService]
 })

@@ -6,9 +6,6 @@ export type SportDocument = HydratedDocument<Sport>;
 @Schema()
 export class Sport {
 
-    @Prop({ index: { unique: true }})
-    sport_id: string;
-
     @Prop({ required:  true })
     name: string;
 

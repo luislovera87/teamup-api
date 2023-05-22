@@ -12,15 +12,15 @@ export class CategoriesService {
     return `This action returns all categories`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`;
+  findOne(_id: string) {
+    return `This action returns a #${_id} category`;
   }
 
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    return `This action updates a #${id} category`;
+  update(_id: string, updateCategoryDto: UpdateCategoryDto) {
+    return `This action updates a #${_id} category`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} category`;
+  remove(_id: string) {
+    return `This action removes a #${_id} category`;
   }
 }

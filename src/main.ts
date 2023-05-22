@@ -1,7 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { PaymentMethod } from './users/entities/payment-method.entity';
 
 declare const module: any;
 
@@ -16,7 +15,7 @@ async function bootstrap() {
     .addTag('sports')
     .addTag('leagues')
     .build();
-  const document = SwaggerModule.createDocument(app, config, { extraModels: [PaymentMethod]});
+  const document = SwaggerModule.createDocument(app, config, { extraModels: []});
   SwaggerModule.setup('api', app, document);
   if (module.hot) {
     module.hot.accept();

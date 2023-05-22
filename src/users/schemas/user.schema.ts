@@ -1,10 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import * as mongoose from "mongoose"
-import { PaymentMethod } from "./payment-method.schema";
-import { Channel } from "./channel.schema";
-import { UtilsService } from "src/shared/utils.service";
+import { HydratedDocument } from "mongoose"
 
-export type UserDocument = mongoose.HydratedDocument<User>;
+export type UserDocument = HydratedDocument<User>;
 @Schema()
 export class User {
     

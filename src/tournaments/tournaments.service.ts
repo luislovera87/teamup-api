@@ -12,15 +12,15 @@ export class TournamentsService {
     return `This action returns all tournaments`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} tournament`;
+  findOne(_id: string) {
+    return `This action returns a #${_id} tournament`;
   }
 
-  update(id: number, updateTournamentDto: UpdateTournamentDto) {
-    return `This action updates a #${id} tournament`;
+  update(_id: string, updateTournamentDto: UpdateTournamentDto) {
+    return `This action updates a #${_id} tournament`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} tournament`;
+  remove(_id: string) {
+    return `This action removes a #${_id} tournament`;
   }
 }

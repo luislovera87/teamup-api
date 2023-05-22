@@ -6,9 +6,6 @@ export type TeamDocument = HydratedDocument<Team>;
 @Schema()
 export class Team {
 
-    @Prop({ index: { unique: true }})
-    team_id: string;
-
     @Prop({ required: true })
     name: string;
 
@@ -21,7 +18,7 @@ export class Team {
     @Prop()
     players: string[];
 
-    @Prop()
+    @Prop({ default: true })
     is_active: boolean;
 
 }

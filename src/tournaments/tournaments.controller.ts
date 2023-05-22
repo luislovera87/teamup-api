@@ -17,18 +17,18 @@ export class TournamentsController {
     return this.tournamentsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.tournamentsService.findOne(+id);
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
+    return this.tournamentsService.findOne(_id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTournamentDto: UpdateTournamentDto) {
-    return this.tournamentsService.update(+id, updateTournamentDto);
+  @Patch(':_id')
+  update(@Param('_id') _id: string, @Body() updateTournamentDto: UpdateTournamentDto) {
+    return this.tournamentsService.update(_id, updateTournamentDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.tournamentsService.remove(+id);
+  @Delete(':_id')
+  remove(@Param('_id') id: string) {
+    return this.tournamentsService.remove(id);
   }
 }
