@@ -5,11 +5,12 @@ import { InjectModel } from '@nestjs/mongoose';
 import { UserDocument } from 'src/users/schemas/user.schema';
 import { Model } from 'mongoose';
 import { User } from './entities/user.entity';
+import { UtilsService } from 'src/shared/utils.service';
 
 @Injectable()
 export class UsersService {
 
-  constructor(@InjectModel(User.name) private readonly userModel: Model<UserDocument>){}
+  constructor(@InjectModel(User.name) private readonly userModel: Model<UserDocument>, private utilsService: UtilsService){}
   create(createUserDto: CreateUserDto): Promise<User> {
     const createdUser = new this.userModel(createUserDto);
     return createdUser.save();

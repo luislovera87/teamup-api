@@ -33,4 +33,6 @@ export class LeaguesController {
   remove(@Param('_id') _id: string) {
     return this.leaguesService.remove(_id);
   }
+
+  
 }

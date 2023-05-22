@@ -3,6 +3,9 @@ import { TeamsService } from './teams.service';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { UpdateUserDto } from 'src/users/dto/update-user.dto';
+import { User } from 'src/users/entities/user.entity';
+import { UserDocument } from 'src/users/schemas/user.schema';
 
 @ApiTags('teams')
 @Controller('teams')
@@ -32,5 +35,10 @@ export class TeamsController {
   @Delete(':_id')
   remove(@Param('_id') _id: string) {
     return this.teamsService.remove(_id);
+  }
+
+  @Patch(':team_id/player')
+  addPlayer(@Param('team_id') team_id: string, @Body() newPlayer: UserDocument) {
+    return this.teamsService.addPlayer(team_id, newPlayer);
   }
 }

@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  app:
+    image: nestjs-test
+    ports:
+      - 3000:3000
+    environment:
+      - ENVIRONMENT=DEV
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodbdata:/data/db

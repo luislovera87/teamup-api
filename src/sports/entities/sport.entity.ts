@@ -1,5 +1,5 @@
 export class Sport {
-    name: string;
-    icon: string;
-    alias: string;
+    readonly name: string;
+    readonly icon: string;
+    readonly alias: string;
 }

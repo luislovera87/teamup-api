@@ -45,6 +45,21 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Running Swagger
+```
+Open browser on any of the following endpoints.
+
+Server
+http://localhost:3000/api
+
+Json
+http://localhost:3000/api-json
+
+YAML
+http://localhost:3000/api-yaml
+
+```
+
 ## Test
 
 ```bash

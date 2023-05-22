@@ -27,8 +27,10 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.2.1",
     "mongoose": "^6.10.0",
+    "nanoid": "^3.3.4",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "short-uuid": "^4.2.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

@@ -1,34 +1,32 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import * as mongoose from "mongoose"
-import { PaymentMethod } from "./payment-method.schema";
+import { HydratedDocument } from "mongoose"
 
-export type UserDocument = mongoose.HydratedDocument<User>;
-
+export type UserDocument = HydratedDocument<User>;
 @Schema()
 export class User {
     
     @Prop()
     first_name: string;
 
-    @Prop()
+    @Prop({ required: true })
     last_name: string;
 
-    @Prop()
+    @Prop({ required: true })
     dob: string;
 
     @Prop()
     preferred_name: string;
 
-    @Prop()
+    @Prop({ index: { unique: true }})
     email: string;
     
     @Prop()
     phone_number: string;
 
-    @Prop()
+    @Prop({ default: true })
     is_active: boolean;
     
-    @Prop()
+    @Prop({ default: false })
     is_owner: boolean;
 
     @Prop()

@@ -1,7 +1,7 @@
 export class Team {
-    team_id: string;
-    name: string;
-    category_id: string;
-    participants?: string[] = [];
-    is_active: boolean = true;
+    readonly name: string;
+    readonly sport_id: string;
+    readonly category_id: string;
+    readonly players?: string[] = [];
+    readonly is_active: boolean = true;
 }

@@ -5,11 +5,12 @@ import { League } from './entities/league.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { LeagueDocument } from './schemas/league.schema';
 import { Model } from 'mongoose';
+import { UtilsService } from 'src/shared/utils.service';
 
 @Injectable()
 export class LeaguesService {
 
-  constructor(@InjectModel(League.name) private readonly leagueModel: Model<LeagueDocument>) {}
+  constructor(@InjectModel(League.name) private readonly leagueModel: Model<LeagueDocument>, private utilsService: UtilsService) {}
 
   create(createLeagueDto: CreateLeagueDto) {
     const createdLeague = new this.leagueModel(createLeagueDto);

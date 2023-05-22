@@ -1,21 +1,18 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import * as mongoose from "mongoose"
+import { HydratedDocument } from "mongoose"
 
-export type LeagueDocument = mongoose.HydratedDocument<League>;
+export type LeagueDocument = HydratedDocument<League>;
 
 @Schema()
 export class League {
 
-    @Prop()
-    league_id: string;
-
-    @Prop()
+    @Prop({ required: true })
     name: string;
 
     @Prop()
     owners: string[];
 
-    @Prop()
+    @Prop({ required: true, default: true })
     is_active: boolean;
 
     @Prop()

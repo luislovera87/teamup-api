@@ -1,5 +1,3 @@
-import { PaymentMethod } from "./payment-method.entity"
-
 export class User {
     readonly first_name: string;
     readonly last_name: string;
@@ -10,5 +8,5 @@ export class User {
     readonly is_active?: boolean = true;
     readonly is_owner?: boolean = false;
     readonly city?: string;
-    readonly state?: string;
+    readonly state?: string; 
 }

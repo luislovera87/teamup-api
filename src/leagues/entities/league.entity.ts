@@ -1,7 +1,7 @@
 export class League {
-    name: string;
-    owners: string[] = [];
-    is_active: boolean = true;
-    sport_id: string;
-    teams: string[] = [];
+    readonly name: string;
+    readonly owners: string[] = [];
+    readonly is_active: boolean = true;
+    readonly sport_id: string;
+    readonly teams: string[] = [];
 }
