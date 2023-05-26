@@ -1,5 +1,6 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory, raw } from "@nestjs/mongoose";
 import { HydratedDocument } from "mongoose"
+import { Location } from "src/shared/schemas/location.schema";
 
 export type LeagueDocument = HydratedDocument<League>;
 
@@ -12,7 +13,7 @@ export class League {
     @Prop()
     owners: string[];
 
-    @Prop({ required: true, default: true })
+    @Prop({ default: true })
     is_active: boolean;
 
     @Prop()
@@ -20,6 +21,10 @@ export class League {
 
     @Prop()
     teams: string[];
+
+    @Prop({ default: [] })
+    locations: Location[]
+
 
 }
 

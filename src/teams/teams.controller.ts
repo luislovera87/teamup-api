@@ -4,8 +4,8 @@ import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { UpdateUserDto } from 'src/users/dto/update-user.dto';
-import { User } from 'src/users/entities/user.entity';
-import { UserDocument } from 'src/users/schemas/user.schema';
+import { User } from 'src/users/user.entity';
+import { UserDocument } from 'src/users/user.schema';
 
 @ApiTags('teams')
 @Controller('teams')

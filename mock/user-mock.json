@@ -1,0 +1,11 @@
+{
+    "first_name": "Luis",
+    "last_name": "Lovera",
+    "dob": "03/10/1990",
+    "email": "luis@mail.com",
+    "preferred_name": "Luis",
+    "phone_number": "123-123-12-12",
+    "is_owner": true,
+    "city": "Downers Grove",
+    "state": "Il"
+}
