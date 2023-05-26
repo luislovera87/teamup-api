@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { SportsService } from './sports.service';
 import { SportsController } from './sports.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Sport, SportSchema } from './schemas/sport.schema';
+import { Sport, SportSchema } from './sport.schema';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: Sport.name, schema: SportSchema }])],

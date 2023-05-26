@@ -1,18 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
-import { Team } from './entities/team.entity';
+import { Team } from './team.entity';
 import { InjectModel } from '@nestjs/mongoose';
-import { TeamDocument } from './schemas/team.schema';
+import { TeamDocument } from './team.schema';
 import { Model } from 'mongoose';
-import { ObjectId } from "mongoose"
-import { UtilsService } from 'src/shared/utils.service';
-import { UserDocument } from 'src/users/schemas/user.schema';
+import { UserDocument } from 'src/users/user.schema';
 
 @Injectable()
 export class TeamsService {
 
-  constructor(@InjectModel(Team.name) private readonly teamModel: Model<TeamDocument>, private utilsService: UtilsService) { }
+  constructor(@InjectModel(Team.name) private readonly teamModel: Model<TeamDocument>) { }
 
   create(createTeamDto: CreateTeamDto) {
     const createdTeam = new this.teamModel(createTeamDto);

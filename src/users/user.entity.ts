@@ -1,3 +1,5 @@
+import { Location } from "src/shared/schemas/location.schema";
+
 export class User {
     readonly first_name: string;
     readonly last_name: string;
@@ -7,6 +9,5 @@ export class User {
     readonly phone_number?: string;
     readonly is_active?: boolean = true;
     readonly is_owner?: boolean = false;
-    readonly city?: string;
-    readonly state?: string; 
+    readonly location?: Location
 }

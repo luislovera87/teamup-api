@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument } from "mongoose"
+import { HydratedDocument, SchemaType } from "mongoose"
+import { Location } from "src/shared/schemas/location.schema";
 
 export type UserDocument = HydratedDocument<User>;
 @Schema()
@@ -30,10 +31,7 @@ export class User {
     is_owner: boolean;
 
     @Prop()
-    city: string;
-
-    @Prop()
-    state: string;
+    location: Location;
 
 }
 
