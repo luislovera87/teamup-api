@@ -1,26 +1,33 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
 import { UpdateTournamentDto } from './dto/update-tournament.dto';
+import { Tournament, TournamentDocument } from './tournament.schema';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class TournamentsService {
+
+  constructor(@InjectModel(Tournament.name) private readonly tournamentModel: Model<TournamentDocument>) { }
+
   create(createTournamentDto: CreateTournamentDto) {
-    return 'This action adds a new tournament';
+    const createdTournament = new this.tournamentModel(createTournamentDto);
+    return createdTournament.save();
   }
 
   findAll() {
-    return `This action returns all tournaments`;
+    return this.tournamentModel.find({}).exec();
   }
 
   findOne(_id: string) {
-    return `This action returns a #${_id} tournament`;
+    return this.tournamentModel.findById(_id).exec();
   }
 
   update(_id: string, updateTournamentDto: UpdateTournamentDto) {
-    return `This action updates a #${_id} tournament`;
+    return this.tournamentModel.updateOne({ _id }, { $set: updateTournamentDto }).exec();
   }
 
   remove(_id: string) {
-    return `This action removes a #${_id} tournament`;
+    return this.tournamentModel.deleteOne({ _id });
   }
 }

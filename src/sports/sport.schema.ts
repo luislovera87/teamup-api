@@ -1,12 +1,12 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument } from "mongoose"
+import { Document, HydratedDocument } from "mongoose"
 
 export type SportDocument = HydratedDocument<Sport>;
 
 @Schema()
-export class Sport {
+export class Sport extends Document {
 
-    @Prop()
+    @Prop({ index: { unique: true }, unique: true })
     name: string;
 
     @Prop()
@@ -14,6 +14,9 @@ export class Sport {
 
     @Prop()
     alias: string;
+
+    @Prop({ default: true })
+    is_active: boolean;
 
 }
 

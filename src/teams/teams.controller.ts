@@ -3,9 +3,9 @@ import { TeamsService } from './teams.service';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { User } from 'src/users/user.schema';
 import { UpdateUserDto } from 'src/users/dto/update-user.dto';
-import { User } from 'src/users/user.entity';
-import { UserDocument } from 'src/users/user.schema';
+import { Types } from 'mongoose';
 
 @ApiTags('teams')
 @Controller('teams')
@@ -37,8 +37,8 @@ export class TeamsController {
     return this.teamsService.remove(_id);
   }
 
-  @Patch(':team_id/player')
-  addPlayer(@Param('team_id') team_id: string, @Body() newPlayer: UserDocument) {
-    return this.teamsService.addPlayer(team_id, newPlayer);
+  @Patch(':_id/player')
+  addPlayer(@Param('_id') _id: string, @Body() body: { player_id: string }) {
+    return this.teamsService.addPlayer(_id, body);
   }
 }

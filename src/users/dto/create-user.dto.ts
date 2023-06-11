@@ -1,7 +1,7 @@
 import { ApiExtraModels, ApiProperty } from "@nestjs/swagger";
-import { Location, LocationSchema } from "src/shared/schemas/location.schema";
+import { LocationDetail } from "src/shared/schemas/location-detail.schema";
 
-@ApiExtraModels(Location)
+// @ApiExtraModels(LocationDetail)
 export class CreateUserDto {
 
     @ApiProperty()
@@ -29,5 +29,5 @@ export class CreateUserDto {
     readonly is_owner?: boolean = false;
 
     @ApiProperty()
-    readonly location?: Location
+    readonly location?: LocationDetail
 }

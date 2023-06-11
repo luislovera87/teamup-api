@@ -22,7 +22,7 @@ const host = !process.env.ENVIRONMENT ? "localhost" : "mongo";
     CategoriesModule,
     SportsModule,
     TournamentsModule,
-    SportsModule  
+    SportsModule
   ],
   controllers: [AppController],
   providers: [AppService]

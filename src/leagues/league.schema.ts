@@ -1,30 +1,33 @@
 import { Prop, Schema, SchemaFactory, raw } from "@nestjs/mongoose";
-import { HydratedDocument } from "mongoose"
-import { Location } from "src/shared/schemas/location.schema";
+import { Document, HydratedDocument, Types } from "mongoose"
+import { LocationDetail } from "src/shared/schemas/location-detail.schema";
+import { Sport } from "src/sports/sport.schema";
+import { Team } from "src/teams/team.schema";
+import { User } from "src/users/user.schema";
+
 
 export type LeagueDocument = HydratedDocument<League>;
 
 @Schema()
-export class League {
+export class League extends Document {
 
     @Prop({ required: true })
     name: string;
 
-    @Prop()
-    owners: string[];
+    @Prop({ type: Types.ObjectId, ref: 'User', default: [] })
+    owners: User[];
+
+    @Prop({ type: Types.ObjectId, ref: 'Sport', required: true })
+    sport: Sport;
+
+    @Prop({ type: Types.ObjectId, ref: 'Team', default: [] })
+    teams: Team[];
+
+    @Prop({ type: Types.ObjectId, ref: 'LocationDetail', required: true, default: [] })
+    locations: LocationDetail[]
 
     @Prop({ default: true })
     is_active: boolean;
-
-    @Prop()
-    sport_id: string;
-
-    @Prop()
-    teams: string[];
-
-    @Prop({ default: [] })
-    locations: Location[]
-
 
 }
 

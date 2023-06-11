@@ -1,23 +1,26 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Location } from "src/shared/schemas/location.schema";
+import { LocationDetail } from "src/shared/schemas/location-detail.schema";
+import { Sport } from "src/sports/sport.schema";
+import { Team } from "src/teams/team.schema";
+import { User } from "src/users/user.schema";
 
 export class CreateLeagueDto {
     @ApiProperty()
     readonly name: string;
 
     @ApiProperty()
-    readonly owners: string[] = [];
+    readonly owners: User[] = [];
 
     @ApiProperty()
     readonly is_active: boolean = true;
 
     @ApiProperty()
-    readonly sport_id: string;
+    readonly sport: Sport;
 
     @ApiProperty()
-    readonly teams: string[] = [];
+    readonly teams: Team[] = [];
 
     @ApiProperty()
-    readonly locations: Location[] = [];
+    readonly locations: LocationDetail[] = [];
 
 }
