@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsEmail, IsNotEmpty, IsPhoneNumber, isPhoneNumber } from "class-validator";
 import { Document, HydratedDocument, Types } from "mongoose"
 import { LocationDetail } from "src/shared/schemas/location-detail.schema";
 
@@ -6,7 +7,7 @@ export type UserDocument = HydratedDocument<User>;
 @Schema()
 export class User extends Document {
 
-    @Prop()
+    @Prop({ required: true })
     first_name: string;
 
     @Prop({ required: true })
