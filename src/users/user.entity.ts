@@ -1,4 +1,5 @@
-import { Location } from "src/shared/schemas/location.schema";
+import { Types } from "mongoose";
+// import { LocationDetail } from "src/shared/schemas/location-detail.schema";
 
 export class User {
     readonly first_name: string;
@@ -9,5 +10,5 @@ export class User {
     readonly phone_number?: string;
     readonly is_active?: boolean = true;
     readonly is_owner?: boolean = false;
-    readonly location?: Location
+    // readonly locationDetail?: LocationDetail;
 }

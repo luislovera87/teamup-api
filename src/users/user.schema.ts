@@ -1,12 +1,13 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument, SchemaType } from "mongoose"
-import { Location } from "src/shared/schemas/location.schema";
+import { IsEmail, IsNotEmpty, IsPhoneNumber, isPhoneNumber } from "class-validator";
+import { Document, HydratedDocument, Types } from "mongoose"
+import { LocationDetail } from "src/shared/schemas/location-detail.schema";
 
 export type UserDocument = HydratedDocument<User>;
 @Schema()
-export class User {
-    
-    @Prop()
+export class User extends Document {
+
+    @Prop({ required: true })
     first_name: string;
 
     @Prop({ required: true })
@@ -30,8 +31,8 @@ export class User {
     @Prop({ default: false })
     is_owner: boolean;
 
-    @Prop()
-    location: Location;
+    @Prop({ type: Types.ObjectId, ref: 'LocationDetail' })
+    location: LocationDetail;
 
 }
 

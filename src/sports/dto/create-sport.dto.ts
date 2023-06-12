@@ -7,4 +7,6 @@ export class CreateSportDto {
     readonly alias: string;
     @ApiProperty()
     readonly icon: string;
+    @ApiProperty({ default: true })
+    readonly is_active: boolean;
 }

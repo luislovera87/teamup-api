@@ -1,24 +1,31 @@
 import { ApiExtraModels, ApiProperty } from "@nestjs/swagger";
-import { Location, LocationSchema } from "src/shared/schemas/location.schema";
+import { IsEmail, IsNotEmpty, IsPhoneNumber } from "class-validator";
+import { LocationDetail } from "src/shared/schemas/location-detail.schema";
 
-@ApiExtraModels(Location)
+// @ApiExtraModels(LocationDetail)
 export class CreateUserDto {
 
+    @IsNotEmpty()
     @ApiProperty()
     readonly first_name: string;
 
+    @IsNotEmpty()
     @ApiProperty()
     readonly last_name: string;
 
+    @IsNotEmpty()
     @ApiProperty()
     readonly dob: string;
 
+    @IsEmail()
+    @IsNotEmpty()
     @ApiProperty()
     readonly email: string;
 
     @ApiProperty()
     readonly preferred_name?: string;
 
+    @IsPhoneNumber('US')
     @ApiProperty()
     readonly phone_number?: string;
 
@@ -29,5 +36,5 @@ export class CreateUserDto {
     readonly is_owner?: boolean = false;
 
     @ApiProperty()
-    readonly location?: Location
+    readonly location?: LocationDetail
 }
